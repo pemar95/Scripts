@@ -47,3 +47,8 @@ foreach ($profile in $profiles) {
     Write-Host "Password: $password"
     Write-Host "-------------------------"
 }
+Write-Host ""
+Write-Host " --------------------------------------------------"
+Write-Host "|            SAVED PASSWORD COMBO ENDED            |"
+Write-Host " --------------------------------------------------"
+Write-Host ""
