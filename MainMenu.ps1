@@ -8,7 +8,8 @@ function Show-Menu {
     Write-Host "1. Find saved WLAN passwords"
  
     Write-Host
-    $choice = Read-Host "Enter your choice"
+    $keyInfo = [System.Console]::ReadKey($true)
+    $choice = $keyInfo.KeyChar.ToString()
 
     # Process user input
     switch ($choice) {
