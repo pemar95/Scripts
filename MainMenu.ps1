@@ -16,6 +16,7 @@ function Show-Menu {
         "1" { Run-Script1 }
         default { 
             Write-Host "Invalid choice. Please try again."
+            Press-AnyKey
             Show-Menu
         }
     }
@@ -24,15 +25,22 @@ function Show-Menu {
 # Define individual script functions
 function Run-Script0 {
     Write-Host "Clearing Powershell history before exiting..."
-    Remove-Item (Get-PSReadlineOption).HistorySavePath
+    Remove-Item (Get-PSreadlineOption).HistorySavePath
     exit
 }
 
 function Run-Script1 {   
-    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/WLAN-PSW-Finder.ps1').Content);"
-}
-
-# Main loop to display the menu and process user input
-while ($true) {
+    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/WLAN-PSW-Finder.ps1').Content);pause"
+    Press-AnyKey
     Show-Menu
 }
+
+# Helper function to prompt user to press any key
+function Press-AnyKey {
+    Write-Host
+    Write-Host "Press any key to continue..."
+    $null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
+}
+
+# Start the script by showing the menu
+Show-Menu
