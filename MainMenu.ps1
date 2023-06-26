@@ -32,12 +32,6 @@ function Run-Script1 {
     powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/WLAN-PSW-Finder.ps1').Content);"
 }
 
-# Helper function to pause execution and wait for user input
-function Press-AnyKey {
-    Write-Host "Press any key to continue..."
-    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-}
-
 # Main loop to display the menu and process user input
 while ($true) {
     Show-Menu
