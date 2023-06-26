@@ -47,8 +47,3 @@ foreach ($profile in $profiles) {
     Write-Host "Password: $password"
     Write-Host "-------------------------"
 }
-Write-Host ""
-Write-Host " --------------------------------------------------"
-Write-Host "|                     END HERE                     |"
-Write-Host " --------------------------------------------------"
-Write-Host ""
