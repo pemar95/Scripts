@@ -16,6 +16,7 @@ function Show-Menu {
         "1" { Run-Script1 }
         default { 
             Write-Host "Invalid choice. Please try again."
+            Press-AnyKey
         }
     }
 }
@@ -30,7 +31,6 @@ function Run-Script0 {
 function Run-Script1 {   
     powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/WLAN-PSW-Finder.ps1').Content);pause"
     Press-AnyKey
-    Show-Menu
 }
 
 # Helper function to prompt user to press any key
