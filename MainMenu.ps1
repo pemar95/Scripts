@@ -30,7 +30,6 @@ function Run-Script0 {
 
 function Run-Script1 {   
     powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/WLAN-PSW-Finder.ps1').Content);"
-    Press-AnyKey
 }
 
 # Helper function to pause execution and wait for user input
