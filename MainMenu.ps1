@@ -14,7 +14,10 @@ function Show-Menu {
     switch ($choice) {
         "0" { Run-Script0 }
         "1" { Run-Script1 }
-        default { Write-Host "Invalid choice. Please try again." | Show-Menu}
+        default { 
+            Write-Host "Invalid choice. Please try again."
+            $choice = Show-Menu
+        }
     }
 }
 
