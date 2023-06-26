@@ -16,6 +16,7 @@ function Show-Menu {
         "1" { Run-Script1 }
         default { 
             Write-Host "Invalid choice. Please try again."
+            pause
             $choice = Show-Menu
         }
     }
