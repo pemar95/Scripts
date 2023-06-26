@@ -33,13 +33,3 @@ function Run-Script1 {
     Press-AnyKey
     Show-Menu
 }
-
-# Helper function to prompt user to press any key
-function Press-AnyKey {
-    Write-Host
-    Write-Host "Press any key to continue..."
-    $null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
-}
-
-# Start the script by showing the menu
-Show-Menu
