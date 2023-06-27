@@ -12,6 +12,11 @@ elseif ($installLanguage -eq "0409") {
     $ssidHeaderText = "SSID name"
     $passwordHeaderText = "Key Content"
 }
+elseif ($installLanguage -eq "0809") {
+    $profileHeaderText = "All User Profile"
+    $ssidHeaderText = "SSID name"
+    $passwordHeaderText = "Key Content"
+}
 elseif ($installLanguage -eq "0407") {
     $profileHeaderText = "Alle Benutzerprofile"
     $ssidHeaderText = "SSID-Name"
