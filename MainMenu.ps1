@@ -23,12 +23,14 @@ function Show-Menu {
 
 # Define individual script functions
 function Run-Script0 {
-    Write-Host "Clearing execution history"
+    Write-Host "Clearing execution history..."
     cd HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\
     Remove-Item .\RunMRU\
     
-    Write-Host "Clearing Powershell history before exiting..."
+    Write-Host "Clearing powershell history..."
     Remove-Item (Get-PSreadlineOption).HistorySavePath
+
+    Write-Host "Goodbye"
     exit
 }
 
