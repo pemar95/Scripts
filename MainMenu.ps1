@@ -13,7 +13,7 @@ function Show-Menu {
     # Process user input
     switch ($choice) {
         "0" { Run-Script0 }
-        "1" { Run-Script1 }
+        "1" { Run-Script1; Press-AnyKey; Show-Menu }
         default { 
             Write-Host "Invalid choice. Please try again."
             Show-Menu
