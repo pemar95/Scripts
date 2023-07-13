@@ -24,7 +24,7 @@ function Show-Menu {
 # Define individual script functions
 function Run-Script0 {
     Write-Host "Clearing execution history..."
-    cd HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\
+    Set-Location HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\
     Remove-Item .\RunMRU\
 
     Write-Host "Clearing PowerShell history..."
@@ -47,7 +47,6 @@ function Press-AnyKey {
         Press-AnyKey
     }
 }
-
 
 # Start the script by showing the menu
 Show-Menu
