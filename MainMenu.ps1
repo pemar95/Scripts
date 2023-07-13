@@ -41,8 +41,11 @@ function Run-Script1 {
 # Helper function to prompt user to press any key
 function Press-AnyKey {
     Write-Host
-    Write-Host "Press any key to continue..."
-    $null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
+    Write-Host "Press Enter to continue..."
+    $key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
+    if ($key.KeyChar -eq "`r") {
+        Press-AnyKey
+    }
 }
 
 # Start the script by showing the menu
