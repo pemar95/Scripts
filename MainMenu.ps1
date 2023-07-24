@@ -6,6 +6,7 @@ function Show-Menu {
     Write-Host " -------------------------------------------------- "
     Write-Host "0. Exit"
     Write-Host "1. Find saved WLAN passwords"
+    Write-Host "2. Retrieve RDP saved hash"
 
     Write-Host
     $choice = Read-Host "Enter your choice"
@@ -14,6 +15,7 @@ function Show-Menu {
     switch ($choice) {
         "0" { Run-Script0 }
         "1" { Run-Script1; Press-AnyKey; Show-Menu }  # Added Press-AnyKey and Show-Menu here
+        "2" { Run-Script2; Press-AnyKey; Show-Menu }  # Added the case for option 2
         default {
             Write-Host "Invalid choice. Please try again."
             Show-Menu
@@ -36,6 +38,11 @@ function Run-Script0 {
 
 function Run-Script1 {
     powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/WLAN-PSW-Finder.ps1').Content);pause"
+}
+
+function Run-Script2 {
+    # Start the "RetrieveRDPSavedHash.ps1" script
+    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/RetrieveRDPSavedHash.ps1').Content);pause"
 }
 
 # Helper function to prompt user to press any key
