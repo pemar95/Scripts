@@ -49,10 +49,44 @@ $button2.Add_Click({
 })
 $form.Controls.Add($button2)
 
+# Create buttons for options 3, 4, and 5
+$button3 = New-Object System.Windows.Forms.Button
+$button3.Text = "List open ports on localhost"
+$button3.Location = New-Object System.Drawing.Point(580, 470)
+$button3.Size = New-Object System.Drawing.Size(250, 30)
+$button3.ForeColor = [System.Drawing.Color]::White
+$button3.Add_Click({
+    $result = Run-Script3
+    $resultTextBox.Lines = $result
+})
+$form.Controls.Add($button3)
+
+$button4 = New-Object System.Windows.Forms.Button
+$button4.Text = "List shared folders on localhost"
+$button4.Location = New-Object System.Drawing.Point(20, 510)
+$button4.Size = New-Object System.Drawing.Size(250, 30)
+$button4.ForeColor = [System.Drawing.Color]::White
+$button4.Add_Click({
+    $result = Run-Script4
+    $resultTextBox.Lines = $result
+})
+$form.Controls.Add($button4)
+
+$button5 = New-Object System.Windows.Forms.Button
+$button5.Text = "List programs installed on localhost"
+$button5.Location = New-Object System.Drawing.Point(300, 510)
+$button5.Size = New-Object System.Drawing.Size(250, 30)
+$button5.ForeColor = [System.Drawing.Color]::White
+$button5.Add_Click({
+    $result = Run-Script5
+    $resultTextBox.Lines = $result
+})
+$form.Controls.Add($button5)
+
 # Create an exit button with white text
 $buttonExit = New-Object System.Windows.Forms.Button
 $buttonExit.Text = "Exit"
-$buttonExit.Location = New-Object System.Drawing.Point(580, 470)
+$buttonExit.Location = New-Object System.Drawing.Point(580, 510)
 $buttonExit.Size = New-Object System.Drawing.Size(180, 30)
 $buttonExit.ForeColor = [System.Drawing.Color]::White
 $buttonExit.Add_Click({
@@ -75,6 +109,25 @@ function Run-Script0 {
     $resultTextBox.Text = "Exiting the script..."
     Start-Sleep -Seconds 2
     $form.Close()
+}
+
+# Define individual script functions for options 3, 4, and 5
+function Run-Script3 {
+    # Start the "Port-Discovery.ps1" script
+    $result = powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/Port-Discovery.ps1').Content)"
+    return $result -split "`n"  # Split the result into an array of lines
+}
+
+function Run-Script4 {
+    # Start the "SharedFolder.ps1" script
+    $result = powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/SharedFolder.ps1').Content)"
+    return $result -split "`n"  # Split the result into an array of lines
+}
+
+function Run-Script5 {
+    # Start the "ProgramLister.ps1" script
+    $result = powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/ProgramLister.ps1').Content)"
+    return $result -split "`n"  # Split the result into an array of lines
 }
 
 # Show the form

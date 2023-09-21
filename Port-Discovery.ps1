@@ -1,0 +1,1 @@
+([Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties()).GetActiveTcpListeners() | Where Address -EQ 0.0.0.0
