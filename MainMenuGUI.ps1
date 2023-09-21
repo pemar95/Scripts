@@ -3,7 +3,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Create a form
 $form = New-Object System.Windows.Forms.Form
 $form.Text = "DarkSec Tool 0.1"
-$form.Size = New-Object System.Drawing.Size(800, 600)
+$form.Size = New-Object System.Drawing.Size(865, 600)
 $form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedSingle
 $form.StartPosition = [System.Windows.Forms.FormStartPosition]::CenterScreen
 $form.BackColor = [System.Drawing.Color]::Black
@@ -19,7 +19,7 @@ $form.Controls.Add($resultLabel)
 # Create a text box for the result (larger size)
 $resultTextBox = New-Object System.Windows.Forms.TextBox
 $resultTextBox.Location = New-Object System.Drawing.Point(20, 50)
-$resultTextBox.Size = New-Object System.Drawing.Size(750, 400)
+$resultTextBox.Size = New-Object System.Drawing.Size(810, 400)
 $resultTextBox.Multiline = $true
 $resultTextBox.ScrollBars = [System.Windows.Forms.ScrollBars]::Vertical
 $resultTextBox.BackColor = [System.Drawing.Color]::Black
@@ -49,11 +49,11 @@ $button2.Add_Click({
 })
 $form.Controls.Add($button2)
 
-# Create buttons for options 3, 4, and 5
+# Create a button for option 3: List open ports on localhost
 $button3 = New-Object System.Windows.Forms.Button
 $button3.Text = "List open ports on localhost"
 $button3.Location = New-Object System.Drawing.Point(580, 470)
-$button3.Size = New-Object System.Drawing.Size(250, 30)
+$button3.Size = New-Object System.Drawing.Size(250, 30) # Adjusted the size
 $button3.ForeColor = [System.Drawing.Color]::White
 $button3.Add_Click({
     $result = Run-Script3
@@ -82,6 +82,19 @@ $button5.Add_Click({
     $resultTextBox.Lines = $result
 })
 $form.Controls.Add($button5)
+
+# Create an exit button with white text
+$buttonExit = New-Object System.Windows.Forms.Button
+$buttonExit.Text = "Exit"
+$buttonExit.Location = New-Object System.Drawing.Point(580, 510)
+$buttonExit.Size = New-Object System.Drawing.Size(250, 30) # Adjusted the size to match
+$buttonExit.ForeColor = [System.Drawing.Color]::White
+$buttonExit.Add_Click({
+    Run-Script0
+})
+$form.Controls.Add($buttonExit)
+
+
 
 # Create an exit button with white text
 $buttonExit = New-Object System.Windows.Forms.Button
