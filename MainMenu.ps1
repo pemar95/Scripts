@@ -20,10 +20,10 @@ function Show-Menu {
         "0" { Run-Script0 }
         "1" { Run-Script1; Press-AnyKey; Show-Menu }  # Added Press-AnyKey and Show-Menu here
         "2" { Run-Script2; Press-AnyKey; Show-Menu }  # Added the case for option 2
-        "3" { Run-Script2; Press-AnyKey; Show-Menu }  # Added the case for option 3
-        "4" { Run-Script2; Press-AnyKey; Show-Menu }  # Added the case for option 4
-        "5" { Run-Script2; Press-AnyKey; Show-Menu }  # Added the case for option 5
-        "6" { Run-Script2; Press-AnyKey; Show-Menu }  # Added the case for option 6
+        "3" { Run-Script3; Press-AnyKey; Show-Menu }  # Added the case for option 3
+        "4" { Run-Script4; Press-AnyKey; Show-Menu }  # Added the case for option 4
+        "5" { Run-Script5; Press-AnyKey; Show-Menu }  # Added the case for option 5
+        "6" { Run-Script6; Press-AnyKey; Show-Menu }  # Added the case for option 6
 
         default {
             Write-Host "Invalid choice. Please try again."
