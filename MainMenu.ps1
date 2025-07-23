@@ -46,31 +46,31 @@ function Run-Script0 {
 }
 
 function Run-Script1 {
-    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/WLAN-PSW-Finder.ps1').Content);pause"
+    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/WLAN-PSW-Finder.ps1').Content);pause"
 }
 
 function Run-Script2 {
     # Start the "RetrieveRDPSavedHash.ps1" script
-    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/RetrieveRDPSavedHash.ps1').Content);pause"
+    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/RetrieveRDPSavedHash.ps1').Content);pause"
 }
 function Run-Script3 {
     # Start the "Port-Discovery.ps1" script
-    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/Port-Discovery.ps1').Content);pause"
+    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Port-Discovery.ps1').Content);pause"
 }
 
 function Run-Script4 {
     # Start the "SharedFolder.ps1" script
-    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/SharedFolder.ps1').Content);pause"
+    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/SharedFolder.ps1').Content);pause"
 }
 
 function Run-Script5 {
     # Start the "SharedFolder.ps1" script
-    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/ProgramLister.ps1').Content);pause"
+    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/ProgramLister.ps1').Content);pause"
 }
 
 function Run-Script6 {
     # Start the "SharedFolder.ps1" script
-    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/Processes.ps1').Content);pause"
+    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Processes.ps1').Content);pause"
 }
 
 # Helper function to prompt user to press any key
