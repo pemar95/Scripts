@@ -57,3 +57,4 @@ Write-Host " --------------------------------------------------"
 Write-Host "|            SAVED PASSWORD COMBO ENDED            |"
 Write-Host " --------------------------------------------------"
 Write-Host ""
+Pause
