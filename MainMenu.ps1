@@ -13,7 +13,6 @@ function Show-Menu {
     Write-Host "6. List processes running on localhost"
     Write-Host "7. Clean Windows Run and PowerShell history"
 
-
     Write-Host
     $choice = Read-Host "Enter your choice"
 
@@ -27,8 +26,6 @@ function Show-Menu {
         "5" { Run-Script5; Press-AnyKey; Show-Menu }
         "6" { Run-Script6; Press-AnyKey; Show-Menu }
         "7" { Run-Script7; Press-AnyKey; Show-Menu }
-
-
         default {
             Write-Host "Invalid choice. Please try again."
             Show-Menu
@@ -40,57 +37,52 @@ function Show-Menu {
 function Run-Script0 {
     Write-Host "Clearing execution history..."
     Set-Location HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\
-    Remove-Item .\RunMRU\
+    Remove-Item .\RunMRU\ -Recurse -Force -ErrorAction SilentlyContinue
 
     Write-Host "Clearing PowerShell history..."
-    Remove-Item (Get-PSReadlineOption).HistorySavePath
+    $historyPath = (Get-PSReadlineOption).HistorySavePath
+    if (Test-Path $historyPath) {
+        Remove-Item $historyPath -Force -ErrorAction SilentlyContinue
+    }
 
     Write-Host "Goodbye"
     exit
 }
 
 function Run-Script1 {
-    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/WLAN-PSW-Finder.ps1').Content);pause"
+    Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/WLAN-PSW-Finder.ps1').Content)
 }
 
 function Run-Script2 {
-    # Start the "RetrieveRDPSavedHash.ps1" script
-    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/RetrieveRDPSavedHash.ps1').Content);pause"
+    Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/RetrieveRDPSavedHash.ps1').Content)
 }
+
 function Run-Script3 {
-    # Start the "Port-Discovery.ps1" script
-    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Port-Discovery.ps1').Content);pause"
+    Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Port-Discovery.ps1').Content)
 }
 
 function Run-Script4 {
-    # Start the "SharedFolder.ps1" script
-    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/SharedFolder.ps1').Content);pause"
+    Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/SharedFolder.ps1').Content)
 }
 
 function Run-Script5 {
-    # Start the "SharedFolder.ps1" script
-    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/ProgramLister.ps1').Content);pause"
+    Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/ProgramLister.ps1').Content)
 }
 
 function Run-Script6 {
-    # Start the "SharedFolder.ps1" script
-    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Processes.ps1').Content);pause"
+    Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Processes.ps1').Content)
 }
 
 function Run-Script7 {
-    # Start the "SharedFolder.ps1" script
-    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Clear-History.ps1').Content);pause"
+    Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Clear-History.ps1').Content)
 }
 
+# Helper function to prompt user to press any key
 function Press-AnyKey {
     Write-Host
     Write-Host "Press Enter to continue..."
     $key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
-    if ($key.KeyChar -eq "`r") {
-        Press-AnyKey
-    }
 }
 
 # Start the script by showing the menu
 Show-Menu
-
