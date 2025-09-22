@@ -87,7 +87,8 @@ function Run-Script7 {
             }
         }
     }
-
+    Write-Host "Run history cleared."
+} 
 
 function Press-AnyKey {
     Write-Host
@@ -98,6 +99,6 @@ function Press-AnyKey {
     }
 }
 
-
 # Start the script by showing the menu
 Show-Menu
+
