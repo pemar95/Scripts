@@ -61,13 +61,5 @@ function Run-Script6 {
     Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Processes.ps1').Content)
 }
 
-# Helper function to prompt user to press any key
-function Press-AnyKey {
-    Write-Host
-    Write-Host "Press Enter to continue..."
-    $null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
-}
-
-
 # Start the script by showing the menu
 Show-Menu
