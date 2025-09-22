@@ -28,3 +28,4 @@ if ($rdpConnections) {
 } else {
     Write-Host "No saved RDP connections found in the registry."
 }
+Pause
