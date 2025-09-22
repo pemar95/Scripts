@@ -71,11 +71,9 @@ function Run-Script7 {
 function Press-AnyKey {
     Write-Host
     Write-Host "Press Enter to continue..."
-    $key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
-    if ($key.KeyChar -eq "`r") {
-        Press-AnyKey
-    }
+    $null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
 }
+
 
 # Start the script by showing the menu
 Show-Menu
