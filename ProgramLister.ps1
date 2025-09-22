@@ -6,3 +6,4 @@ $installedSoftware = $softwareKeys | Where-Object { $_.DisplayName -ne $null } |
 
 # Display the list of installed software and their versions
 $installedSoftware | Format-Table -AutoSize
+Pause
