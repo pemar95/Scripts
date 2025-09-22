@@ -87,8 +87,7 @@ function Run-Script7 {
             }
         }
     }
-    Write-Host "Run history cleared."
-}
+
 
 function Press-AnyKey {
     Write-Host
