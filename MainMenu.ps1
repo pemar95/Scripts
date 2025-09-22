@@ -4,7 +4,7 @@ function Show-Menu {
     Write-Host " -------------------------------------------------- "
     Write-Host "|                    SCRIPT MENU                   |"
     Write-Host " -------------------------------------------------- "
-    Write-Host "0. Exit"
+    Write-Host "0. Clear history and exit"
     Write-Host "1. List saved WLAN passwords"
     Write-Host "2. List RDP saved hash"
     Write-Host "3. List open ports on localhost"
