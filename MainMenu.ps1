@@ -87,8 +87,9 @@ function Run-Script7 {
             }
         }
     }
+    Write-Host "Run history cleared."
+}
 
-# Helper function to prompt user to press any key
 function Press-AnyKey {
     Write-Host
     Write-Host "Press Enter to continue..."
@@ -97,6 +98,7 @@ function Press-AnyKey {
         Press-AnyKey
     }
 }
+
 
 # Start the script by showing the menu
 Show-Menu
