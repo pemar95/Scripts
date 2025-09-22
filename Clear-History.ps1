@@ -24,5 +24,3 @@ if (Test-Path $psHistory) {
 } else {
     Write-Host "PowerShell history file not found."
 }
-
-Pause
