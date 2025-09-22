@@ -63,8 +63,6 @@ function Run-Script3 {
     Read-Host "Press Enter to continue..."
 }
 
-
-
 function Run-Script4 {
     Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/SharedFolder.ps1').Content)
 }
