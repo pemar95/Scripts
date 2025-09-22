@@ -11,6 +11,8 @@ function Show-Menu {
     Write-Host "4. List shared folders on localhost"
     Write-Host "5. List programs installed on localhost"
     Write-Host "6. List processes running on localhost"
+    Write-Host "7. Clean Windows Run and PowerShell history"
+
 
     Write-Host
     $choice = Read-Host "Enter your choice"
@@ -18,12 +20,14 @@ function Show-Menu {
     # Process user input
     switch ($choice) {
         "0" { Run-Script0 }
-        "1" { Run-Script1; Press-AnyKey; Show-Menu }  # Added Press-AnyKey and Show-Menu here
-        "2" { Run-Script2; Press-AnyKey; Show-Menu }  # Added the case for option 2
-        "3" { Run-Script3; Press-AnyKey; Show-Menu }  # Added the case for option 3
-        "4" { Run-Script4; Press-AnyKey; Show-Menu }  # Added the case for option 4
-        "5" { Run-Script5; Press-AnyKey; Show-Menu }  # Added the case for option 5
-        "6" { Run-Script6; Press-AnyKey; Show-Menu }  # Added the case for option 6
+        "1" { Run-Script1; Press-AnyKey; Show-Menu }
+        "2" { Run-Script2; Press-AnyKey; Show-Menu } 
+        "3" { Run-Script3; Press-AnyKey; Show-Menu }
+        "4" { Run-Script4; Press-AnyKey; Show-Menu }
+        "5" { Run-Script5; Press-AnyKey; Show-Menu }
+        "6" { Run-Script6; Press-AnyKey; Show-Menu }
+        "7" { Run-Script7; Press-AnyKey; Show-Menu }
+
 
         default {
             Write-Host "Invalid choice. Please try again."
@@ -72,6 +76,17 @@ function Run-Script6 {
     # Start the "SharedFolder.ps1" script
     powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Processes.ps1').Content);pause"
 }
+
+function Run-Script7 {
+    Write-Host "Clearing Windows Run history..."
+    $runMRUPath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\RunMRU"
+    if (Test-Path $runMRUPath) {
+        Get-ItemProperty -Path $runMRUPath | ForEach-Object {
+            $_.PSObject.Properties | Where-Object { $_.Name -match '^[a-z]$' } | ForEach-Object {
+                Remove-ItemProperty -Path $runMRUPath -Name $_.Name -ErrorAction SilentlyContinue
+            }
+        }
+    }
 
 # Helper function to prompt user to press any key
 function Press-AnyKey {
