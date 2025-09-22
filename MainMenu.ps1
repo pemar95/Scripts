@@ -35,17 +35,7 @@ function Show-Menu {
 
 # Define individual script functions
 function Run-Script0 {
-    Write-Host "Clearing execution history..."
-    Set-Location HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\
-    Remove-Item .\RunMRU\ -Recurse -Force -ErrorAction SilentlyContinue
-
-    Write-Host "Clearing PowerShell history..."
-    $historyPath = (Get-PSReadlineOption).HistorySavePath
-    if (Test-Path $historyPath) {
-        Remove-Item $historyPath -Force -ErrorAction SilentlyContinue
-    }
-
-    Write-Host "Goodbye"
+    Run-Script7 
     exit
 }
 
@@ -58,9 +48,7 @@ function Run-Script2 {
 }
 
 function Run-Script3 {
-    $scriptContent = Invoke-WebRequest 'https://raw.githubusercontent.com/pemar95/Scripts/main/Port-Discovery.ps1' -UseBasicParsing
-    Invoke-Expression $scriptContent.Content
-    Read-Host "Press Enter to continue..."
+    Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Port-Discovery.ps1').Content)
 }
 
 function Run-Script4 {
@@ -84,6 +72,9 @@ function Press-AnyKey {
     Write-Host
     Write-Host "Press Enter to continue..."
     $key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp")
+    if ($key.KeyChar -eq "`r") {
+        Press-AnyKey
+    }
 }
 
 # Start the script by showing the menu
