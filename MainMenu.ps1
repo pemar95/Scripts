@@ -11,7 +11,6 @@ function Show-Menu {
     Write-Host "4. List shared folders on localhost"
     Write-Host "5. List programs installed on localhost"
     Write-Host "6. List processes running on localhost"
-    Write-Host "7. Clean Windows Run and PowerShell history"
 
     Write-Host
     $choice = Read-Host "Enter your choice"
@@ -25,7 +24,6 @@ function Show-Menu {
         "4" { Run-Script4; Press-AnyKey; Show-Menu }
         "5" { Run-Script5; Press-AnyKey; Show-Menu }
         "6" { Run-Script6; Press-AnyKey; Show-Menu }
-        "7" { Run-Script7; Press-AnyKey; Show-Menu }
         default {
             Write-Host "Invalid choice. Please try again."
             Show-Menu
@@ -35,7 +33,7 @@ function Show-Menu {
 
 # Define individual script functions
 function Run-Script0 {
-    Run-Script7 
+    Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Clear-History.ps1').Content)
     exit
 }
 
@@ -61,10 +59,6 @@ function Run-Script5 {
 
 function Run-Script6 {
     Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Processes.ps1').Content)
-}
-
-function Run-Script7 {
-    Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Clear-History.ps1').Content)
 }
 
 # Helper function to prompt user to press any key
