@@ -13,3 +13,4 @@ if ($openShares.Count -eq 0) {
         Write-Host "---------------------------------"
     }
 }
+Pause
