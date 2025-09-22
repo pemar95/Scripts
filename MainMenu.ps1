@@ -79,7 +79,7 @@ function Run-Script6 {
 
 function Run-Script7 {
     # Start the "SharedFolder.ps1" script
-    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Clear.ps1').Content);pause"
+    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Clear-History.ps1').Content);pause"
 }
 
 function Press-AnyKey {
