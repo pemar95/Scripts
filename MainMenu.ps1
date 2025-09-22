@@ -78,17 +78,9 @@ function Run-Script6 {
 }
 
 function Run-Script7 {
-    Write-Host "Clearing Windows Run history..."
-    $runMRUPath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\RunMRU"
-    if (Test-Path $runMRUPath) {
-        Get-ItemProperty -Path $runMRUPath | ForEach-Object {
-            $_.PSObject.Properties | Where-Object { $_.Name -match '^[a-z]$' } | ForEach-Object {
-                Remove-ItemProperty -Path $runMRUPath -Name $_.Name -ErrorAction SilentlyContinue
-            }
-        }
-    }
-    Write-Host "Run history cleared."
-} 
+    # Start the "SharedFolder.ps1" script
+    powershell -ExecutionPolicy Bypass -Command "Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Clear.ps1').Content);pause"
+}
 
 function Press-AnyKey {
     Write-Host
