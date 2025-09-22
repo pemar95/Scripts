@@ -58,8 +58,21 @@ function Run-Script2 {
 }
 
 function Run-Script3 {
-    Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Port-Discovery.ps1').Content)
+    Write-Host "Listing open TCP ports on localhost..."
+    # Download the script content
+    $scriptContent = (Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Port-Discovery.ps1').Content
+    # Execute the script in the current session and capture output
+    $ports = Invoke-Expression $scriptContent
+    # Format output nicely if it’s a collection of objects
+    if ($ports) {
+        $ports | Format-Table -AutoSize
+    } else {
+        Write-Host "No ports found or script returned nothing."
+    }
+    Write-Host
+    Read-Host "Press Enter to continue..."
 }
+
 
 function Run-Script4 {
     Invoke-Expression ((Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/SharedFolder.ps1').Content)
