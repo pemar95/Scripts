@@ -59,19 +59,30 @@ function Run-Script2 {
 
 function Run-Script3 {
     Write-Host "Listing open TCP ports on localhost..."
-    # Download the script content
-    $scriptContent = (Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Port-Discovery.ps1').Content
-    # Execute the script in the current session and capture output
-    $ports = Invoke-Expression $scriptContent
-    # Format output nicely if it’s a collection of objects
+
+    # Download the script and save temporarily
+    $tmpPath = "$env:TEMP\Port-Discovery.ps1"
+    Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/pemar95/Scripts/main/Port-Discovery.ps1' -OutFile $tmpPath
+
+    # Dot-source to run in current session
+    . $tmpPath
+
+    # Assuming the script outputs TCP listeners, capture them
+    $ports = ([Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties()).GetActiveTcpListeners()
+    
     if ($ports) {
         $ports | Format-Table -AutoSize
     } else {
-        Write-Host "No ports found or script returned nothing."
+        Write-Host "No open TCP ports found."
     }
+
     Write-Host
     Read-Host "Press Enter to continue..."
+    
+    # Clean up
+    Remove-Item $tmpPath -ErrorAction SilentlyContinue
 }
+
 
 
 function Run-Script4 {
